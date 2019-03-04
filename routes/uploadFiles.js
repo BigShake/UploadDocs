@@ -21,9 +21,10 @@ router.post('/', checkLogin, function (req, res, next) {
   }
 
   // 写入 flash
-  req.flash('success', '上传文档成功')
+  // req.flash('success', '上传文档成功')
   // 跳转到首页
-  res.redirect('/posts/create')
+  // res.redirect('/posts/create')
+  return res.status(200).send({ 'code': 0, 'message': 'success', 'data': '上传文档成功' })
 })
 
 module.exports = router

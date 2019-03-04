@@ -7,7 +7,7 @@
     "test": "istanbul cover _mocha",
     "start": "cross-env NODE_ENV=production pm2 start index.js --name 'myblog'",
     "stop": "cross-env NODE_ENV=production pm2 stop myblog",
-    "lint": "eslint --fix config lib middlewares models routes test"
+    "lint": "eslint --fix config databases middlewares routes"
   },
   "author": "nswbmw",
   "license": "MIT",

@@ -11,14 +11,6 @@ const winston = require('winston')// 日志
 const expressWinston = require('express-winston')// express 的 winston 日志中间件
 
 const app = express()
-
-// 设置模板目录
-app.set('views', path.join(__dirname, 'views'))
-// 设置模板引擎为 ejs
-app.set('view engine', 'ejs')
-// 设置静态文件目录
-app.use(express.static(path.join(__dirname, 'public')))
-
 /**
  * 由于 HTTP 协议是无状态的协议，所以服务端需要记录用户的状态时，就需要用某种机制来识别具体的用户，这个机制就是会话（Session）。
  *
@@ -51,7 +43,7 @@ app.use(flash())
 
 // 处理表单及文件上传的中间件
 app.use(formidable({
-  uploadDir: path.join(__dirname, 'public/img'), // 上传文件目录
+  uploadDir: path.join(__dirname, 'files/img'), // 上传文件目录
   keepExtensions: true// 保留后缀
 }))
 
@@ -99,8 +91,9 @@ app.use(expressWinston.errorLogger({
 // 错误处理，通过next()处理
 app.use(function (err, req, res, next) {
   console.error(err)
-  req.flash('error', err.message)
-  res.redirect('/posts')
+  // req.flash('error', err.message)
+  // res.redirect('/posts')
+  return res.status(200).send({ 'code': -1, 'message': 'fail', 'data': err.message })
 })
 
 if (module.parent) {
