@@ -1,33 +1,33 @@
-const express = require('express')
-const router = express.Router()
-const path = require('path')
+const express = require('express');
+const router = express.Router();
+const path = require('path');
 
-const checkLogin = require('../middlewares/check').checkLogin
+const checkLogin = require('../middlewares/check').checkLogin;
 
 router.get('/', checkLogin, function (req, res, next) {
-  res.render('uploadDocs')
-  // render指向views目录下的ejs文件
-})
+	res.render('uploadDocs');
+	// render指向views目录下的ejs文件
+});
 
 //
 router.post('/', checkLogin, function (req, res, next) {
-  const avatar = req.files.avatar.path.split(path.sep).pop()// 文件路径
-  // name, path, size, type
+	const avatar = req.files.avatar.path.split(path.sep).pop();// 文件路径
+	// name, path, size, type
 
-  // 校验参数
+	// 校验参数
 
-  if (!req.files.avatar.name) {
-    throw new Error('缺少头像')
-  }
+	if (!req.files.avatar.name) {
+		throw new Error('缺少头像');
+	}
 
-  // 写入 flash
-  // req.flash('success', '上传文档成功')
-  // 跳转到首页
-  // res.redirect('/posts/create')
-  return res.status(200).send({ 'code': 0, 'message': 'success', 'data': '上传文档成功' })
-})
+	// 写入 flash
+	// req.flash('success', '上传文档成功')
+	// 跳转到首页
+	// res.redirect('/posts/create')
+	return res.status(200).send({ 'code': 0, 'message': 'success', 'data': '上传文档成功' });
+});
 
-module.exports = router
+module.exports = router;
 
 /**
     在views/commponts/nav-setting.ejs 中添加 uploadDocs 链接,

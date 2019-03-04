@@ -1,0 +1,6 @@
+{
+    "eslint.enable": true,//启用eslint
+    "eslint.autoFixOnSave": true,//保存时自动lint
+    "files.eol": "\n",//如果你在linux/mac上开发，请添加这一项，windows请忽略
+    "editor.insertSpaces": false//禁止自动添加空格，因为我们前面定义使用tab缩进，如果你使用空格缩进请忽略
+}
