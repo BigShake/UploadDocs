@@ -21,9 +21,14 @@ upload and read pdf document
 ```
 
 ## 接口文档
+[接口文档](https://github.com/BigShake/UploadDocs/blob/master/book/api_doc.md)
 
 ## 配置文件
-
-## eslint
+[配置文件](https://github.com/BigShake/UploadDocs/blob/master/book/config_doc.md)
 
 ## mongodb_init
+[mongodb_init](https://github.com/BigShake/UploadDocs/blob/master/book/mongo_init.md)
+
+## eslint
+[eslint](https://github.com/BigShake/UploadDocs/blob/master/book/eslint_doc.md)
+
