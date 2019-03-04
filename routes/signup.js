@@ -12,8 +12,8 @@ const checkNotLogin = require('../middlewares/check').checkNotLogin;
  * http://www.expressjs.com.cn/guide/routing.html
  */
 // GET /signup 注册页
-router.get('/', checkNotLogin, function (req, res, next) {
-	res.render('signup');
+router.get('/', checkNotLogin, function (req, res) {
+	return res.status(200).send({ 'code': 0, 'message': 'success', 'data': 'success' });
 });
 
 // POST /signup 用户注册
@@ -49,9 +49,7 @@ router.post('/', checkNotLogin, function (req, res, next) {
 	} catch (e) {
 		// 注册失败，异步删除上传的头像
 		fs.unlink(req.fields.avatar.path);
-		// req.flash('error', e.message)
 		return res.status(200).send({ 'code': -1, 'message': 'fail', 'data': e.message });
-		// return res.redirect('/signup')
 	}
 
 	// 明文密码加密
@@ -73,10 +71,6 @@ router.post('/', checkNotLogin, function (req, res, next) {
 			// 删除密码这种敏感信息，将用户信息存入 session
 			delete user.password;
 			req.session.user = user;
-			// 写入 flash
-			// req.flash('success', '注册成功')
-			// 跳转到首页
-			// res.redirect('/posts')
 			return res.status(200).send({ 'code': 0, 'message': 'success', 'data': '注册成功' });
 		})
 		.catch(function (e) {
@@ -84,8 +78,6 @@ router.post('/', checkNotLogin, function (req, res, next) {
 			fs.unlink(req.fields.avatar.path);
 			// 用户名被占用则跳回注册页，而不是错误页
 			if (e.message.match('duplicate key')) {
-				// req.flash('error', '用户名已被占用')
-				// return res.redirect('/signup')
 				return res.status(200).send({ 'code': -1, 'message': 'fail', 'data': '用户名已被占用' });
 			}
 			next(e);

@@ -1,6 +1,6 @@
 存放路由文件
 
-index初始化
-singup注册页
-signout
-singin
+index.js: 路由集合
+singup.js: 注册
+singin.js: 登录
+signout.js: 登出
