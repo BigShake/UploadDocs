@@ -1,15 +1,15 @@
 {
-  "name": "myblog",
+  "name": "uploadDocs",
   "version": "1.0.0",
-  "description": "my first blog",
+  "description": "description",
   "main": "index.js",
   "scripts": {
     "test": "istanbul cover _mocha",
-    "start": "cross-env NODE_ENV=production pm2 start index.js --name 'myblog'",
-    "stop": "cross-env NODE_ENV=production pm2 stop myblog",
+    "start": "cross-env NODE_ENV=production pm2 start index.js --name 'uploadDocs'",
+    "stop": "cross-env NODE_ENV=production pm2 stop uploadDocs",
     "lint": "eslint --fix config databases middlewares routes"
   },
-  "author": "nswbmw",
+  "author": "swn",
   "license": "MIT",
   "dependencies": {
     "config-lite": "2.1.0",
